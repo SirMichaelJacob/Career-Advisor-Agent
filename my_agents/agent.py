@@ -96,22 +96,14 @@ summary_agent = Agent(
     output_key="final_summary"
 )
 
-#sequential root agent
-sequential_root_agent = SequentialAgent(
-    name="sequential_root_agent",
-    description="A sequential agent that executes the tasks in a specific order.",
-    
-    sub_agents=[
-        cv_analyzer_agent,
-        parallel_advisor_agent,
-        summary_agent
-    ]
-)
+#root agent
 root_agent = SequentialAgent(
     name="root_agent",
     description="Career advice and certification pipeline",
     sub_agents=[
-        sequential_root_agent
+        cv_analyzer_agent,
+        parallel_advisor_agent,
+        summary_agent
     ]
 )
 
